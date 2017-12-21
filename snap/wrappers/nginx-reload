@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
+
+exec "$SNAP/nginx/sbin/nginx" "-c" "$SNAP/nginx/conf/nginx.conf" "-p" "$SNAP_COMMON/nginx" "-s" "reload" "-g" "daemon off;"

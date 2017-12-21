@@ -1,0 +1,38 @@
+name: django-gunicorn
+version: '0.1' 
+summary: django-gunicorn
+description: |
+  Django Example
+
+grade: stable
+confinement: classic
+
+apps:
+  django-gunicorn:
+    environment:
+      DJANGO_SECRETS: $SNAP_COMMON/django_secrets
+    command: wrappers/django-gunicorn
+    daemon: simple
+  nginx:
+    daemon: simple
+    command: wrappers/nginx-run
+    reload-command: wrappers/nginx-reload
+parts:
+  django-gunicorn:
+    after: [nginx-wrap]
+    plugin: python
+    source: .
+    python-version: python3
+    requirements: requirements.txt
+    stage-packages: [libpq-dev,libssl-dev]
+  wrappers:
+    plugin: dump
+    source: snap_wrap/
+  nginx-wrap:
+    after: [wrappers]
+    plugin: nginx
+    source: .
+    install: |
+      rm $SNAPCRAFT_PART_INSTALL/nginx/conf/nginx.conf.default
+      rm $SNAPCRAFT_PART_INSTALL/nginx/conf/nginx.conf
+      cp ./nginx.conf.snap.template $SNAPCRAFT_PART_INSTALL/nginx/conf/nginx.conf

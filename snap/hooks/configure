@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -eux
+
+# setup root-writable versioned dirs
+mkdir -p ${SNAP_COMMON}/etc/sentry
+
+# setup sentry config
+if [ -e "${SNAP_COMMON}/etc/sentry/sentry.conf.py" ]; then
+    echo "sentry user defined config exists"
+else
+    cp ${SNAP}/etc/sentry/* ${SNAP_COMMON}/etc/sentry/
+fi

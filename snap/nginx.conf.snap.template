@@ -1,0 +1,34 @@
+#user  nobody;
+worker_processes  1;
+
+error_log syslog:server=unix:/dev/log;
+
+
+events {
+    worker_connections  1024;
+}
+
+http {
+
+  upstream app_server {
+    server unix:/tmp/django-gunicorn.sock fail_timeout=0;
+  }
+
+
+  server {
+    listen 5000;
+
+    keepalive_requests 1000;
+    keepalive_timeout 30;
+
+    location / {
+        proxy_pass http://app_server;
+        proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_buffering off;
+        access_log /var/snap/pdl-api/common/log/access.log;
+        error_log /var/snap/pdl-api/common/log/error.log;
+    }
+  }
+}

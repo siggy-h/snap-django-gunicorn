@@ -118,3 +118,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Grab the rest of the configs from DJANGO_SECRETS_DIR
+if os.getenv("DJANGO_SECRETS_DIR"):
+    from glob import glob
+    for settings_file in glob("{}/*.py".format(os.getenv("DJANGO_SECRETS_DIR"))):
+        exec(compile(open(settings_file, "rb").read(), settings_file, 'exec'))

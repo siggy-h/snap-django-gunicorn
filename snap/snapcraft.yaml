@@ -10,7 +10,7 @@ confinement: classic
 apps:
   django-gunicorn:
     environment:
-      DJANGO_SECRETS: $SNAP_COMMON/django_secrets
+      DJANGO_SECRETS_DIR: $SNAP_COMMON/django_secrets
     command: wrappers/django-gunicorn
     daemon: simple
   nginx:

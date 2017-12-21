@@ -27,7 +27,7 @@ parts:
     stage-packages: [libpq-dev,libssl-dev]
   wrappers:
     plugin: dump
-    source: snap_wrap/
+    source: snap/
   nginx-wrap:
     after: [wrappers]
     plugin: nginx

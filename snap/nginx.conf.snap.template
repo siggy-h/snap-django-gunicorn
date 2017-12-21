@@ -27,8 +27,8 @@ http {
         proxy_set_header Host $http_host;
         proxy_redirect off;
         proxy_buffering off;
-        access_log /var/snap/pdl-api/common/log/access.log;
-        error_log /var/snap/pdl-api/common/log/error.log;
+        access_log /var/snap/django-gunicorn/common/log/access.log;
+        error_log /var/snap/django-gunicorn/common/log/error.log;
     }
   }
 }

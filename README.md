@@ -20,8 +20,12 @@ $ sudo snapcraft
 $ sudo snap install django-gunicorn_0.1_amd64.snap --classic --dangerous
 ```
 
-# User
-After building and installing the snap, visit `http://<your-ip-address>:5000` and view your Django application running in the snap!
+# Usage
+After building and installing the snap, visit
+```
+http://<your-ip-address>:5000
+```
+and view your Django application running in the snap!
 
 
 ### TODO

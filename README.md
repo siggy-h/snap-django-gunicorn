@@ -28,7 +28,7 @@ http://<your-ip-address>:5000
 and view your Django application running in the snap!
 
 
-### TODO
+#### TODO
 * Make snap confined
 * Snap nginx separate from django-gunicorn snap (this will make builds faster and a bunch of good/cool things possible)
 * Possibily template this demo (ex `./create mynewproj` will create the directory layout and files with the correct names)
@@ -37,5 +37,5 @@ and view your Django application running in the snap!
 #### Author
 * James Beedy (c) 2017 <jamesbeedy@gmail.com>
 
-### Copyright
+#### Copyright
 * AGPLv3 (see `copyright`)

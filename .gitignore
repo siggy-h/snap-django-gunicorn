@@ -83,4 +83,5 @@ csv_run.py
 config_test.py
 flatfile_run.py
 
-
+static/
+db.sqlite3

@@ -25,12 +25,15 @@ parts:
     requirements: requirements.txt
     stage-packages: [libpq-dev,libssl-dev]
     install: |
-      mkdir -p $SNAPCRAFT_PART_INSTALL/myproj
-      cp -r ./* $SNAPCRAFT_PART_INSTALL/myproj/
+      mkdir -p $SNAPCRAFT_PART_INSTALL/django-gunicorn
+      python3 ./manage.py collectstatic --no-input
+      cp -r ./* $SNAPCRAFT_PART_INSTALL/django-gunicorn/
   wrappers:
+    after: [django-gunicorn]
     plugin: dump
     source: snap/wrap/
   nginx-wrap:
+    after: [django-gunicorn]
     plugin: nginx
     source: snap/templates/
     install: |

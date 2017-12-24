@@ -4,3 +4,4 @@ set -eux
 
 # make logging dir
 mkdir -p ${SNAP_COMMON}/log
+mkdir -p ${SNAP_COMMON}/django_secrets

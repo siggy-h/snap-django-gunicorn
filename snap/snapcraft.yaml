@@ -19,20 +19,21 @@ apps:
     reload-command: wrappers/nginx-reload
 parts:
   django-gunicorn:
-    after: [nginx-wrap]
     plugin: python
     source: .
     python-version: python3
     requirements: requirements.txt
     stage-packages: [libpq-dev,libssl-dev]
+    install: |
+      mkdir -p $SNAPCRAFT_PART_INSTALL/myproj
+      cp -r ./* $SNAPCRAFT_PART_INSTALL/myproj/
   wrappers:
     plugin: dump
-    source: snap/
+    source: snap/wrap/
   nginx-wrap:
-    after: [wrappers]
     plugin: nginx
-    source: .
+    source: snap/templates/
     install: |
       rm $SNAPCRAFT_PART_INSTALL/nginx/conf/nginx.conf.default
       rm $SNAPCRAFT_PART_INSTALL/nginx/conf/nginx.conf
-      cp ./nginx.conf.snap.template $SNAPCRAFT_PART_INSTALL/nginx/conf/nginx.conf
+      mv ./nginx.conf.snap.template $SNAPCRAFT_PART_INSTALL/nginx/conf/nginx.conf

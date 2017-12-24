@@ -25,7 +25,7 @@ SECRET_KEY = '#t=gi8@vzn2&0=@vwi9$i2ovu(s)u3-d5wv2kz_(#wt6aajc-t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -122,5 +122,8 @@ STATIC_URL = '/static/'
 # Grab the rest of the configs from DJANGO_SECRETS_DIR
 if os.getenv("DJANGO_SECRETS_DIR"):
     from glob import glob
-    for settings_file in glob("{}/*.py".format(os.getenv("DJANGO_SECRETS_DIR"))):
-        exec(compile(open(settings_file, "rb").read(), settings_file, 'exec'))
+    settings_files = [settings_file for settings_file in
+                      glob("{}/*.py".format(os.getenv("DJANGO_SECRETS_DIR")))]
+    if len(settings_files) > 0:
+        for settings_file in settings_files:
+            exec(compile(open(settings_file, "rb").read(), settings_file, 'exec'))

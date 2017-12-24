@@ -29,7 +29,8 @@ and view your Django application running in the snap!
 
 
 #### TODO
-* Make snap confined
+* Make snap strictly confined instead of classic
+* Follow snapping best practices more closely by removing unneeded files and dirs (I'm sure there are other things I've overlooked)
 * Add wrapper for manage.py to facilitate lifecycle more easily via charm
 * Snap nginx separate from django-gunicorn snap (this will make builds faster and a bunch of good/cool things possible)
 * Possibily template this demo (ex `./create mynewproj` will create the directory layout and files with the correct names)

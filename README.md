@@ -30,6 +30,7 @@ and view your Django application running in the snap!
 
 #### TODO
 * Make snap confined
+* Add wrapper for manage.py to facilitate lifecycle more easily via charm
 * Snap nginx separate from django-gunicorn snap (this will make builds faster and a bunch of good/cool things possible)
 * Possibily template this demo (ex `./create mynewproj` will create the directory layout and files with the correct names)
 

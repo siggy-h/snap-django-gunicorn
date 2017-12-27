@@ -27,6 +27,28 @@ http://<your-ip-address>:5000
 ```
 and view your Django application running in the snap!
 
+# Development
+Follow the steps below to setup a development environment.
+
+1. Create a virturalenv
+```bash
+python3 -m venv .venv
+```
+2. Activate the venv
+```bash
+source .venv/bin/activate
+```
+3. Install dependancies + test deps
+```bash
+pip install -r requirements.txt
+pip install -r test-requirements.txt
+
+```
+4. Run dev server
+```bash
+./manage.py runserver <host>:<port>
+```
+
 
 #### TODO
 * Make snap strictly confined instead of classic
